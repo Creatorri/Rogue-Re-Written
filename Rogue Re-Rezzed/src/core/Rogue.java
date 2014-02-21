@@ -15,6 +15,7 @@ import ui.Menu;
  * @author Torri
  */
 public class Rogue {
+    //LAKNDOIANFOIA
     public static Menu mm;
     private static final ArrayList<Level> levels = new ArrayList<>();
     private static Level l;
