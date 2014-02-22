@@ -50,7 +50,14 @@ public class MButton {
         g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,sy/2));
         FontMetrics fm = g.getFontMetrics(g.getFont());
         int width = fm.stringWidth(name);
-        g.drawString(name, sx/2-width/2, sy/2+sy/4);
+        int div = 2;
+        while(width>sx1){
+            div++;
+            g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,sy/div));
+            fm = g.getFontMetrics(g.getFont());
+            width = fm.stringWidth(name);
+        }
+        g.drawString(name, sx/2-width/2, (sy/2)+((sy/div)/2));
         g.dispose();
     }
     public void addListener(MButtonInput mbi1, Component parent1){
