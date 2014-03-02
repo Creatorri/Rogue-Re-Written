@@ -16,4 +16,7 @@ public class HostileEntity extends Entity{
     public HostileEntity(Level l) {
         super(l);
     }
+    @Override
+    public void turn() {
+    }
 }

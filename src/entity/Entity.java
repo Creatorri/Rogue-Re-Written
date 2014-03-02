@@ -11,7 +11,7 @@ import render.Sprite;
  * Parent Entity class
  * @author Torri
  */
-public class Entity {
+public abstract class Entity {
     /**
      * Current chunk
      */
@@ -75,7 +75,7 @@ public class Entity {
     /**
      * Updates entity
      */
-    public void turn(){}
+    public abstract void turn();
     /**
      * Spawns randomly on the level
      */

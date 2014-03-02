@@ -9,6 +9,9 @@ import entity.Entity;
  * @author Torri
  */
 public class Item extends Entity{
+    @Override
+    public void turn() {
+    }
     public enum materials{
         Wood,Stone,Copper,Bronze,Silver,Gold,Iron,Steel,Unknown
     }

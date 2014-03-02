@@ -11,4 +11,7 @@ public class Player extends Entity{
     public Player(Level l) {
         super(l);
     }
+    @Override
+    public void turn() {
+    }
 }
