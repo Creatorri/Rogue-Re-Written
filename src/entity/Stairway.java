@@ -1,4 +1,3 @@
-
 package entity;
 
 import dungeon.Level;
@@ -13,5 +12,8 @@ public class Stairway extends Entity{
     }
     @Override
     public void turn() {
+        if(distTo(l.getPlayer(0))<1){
+            
+        }
     }
 }
