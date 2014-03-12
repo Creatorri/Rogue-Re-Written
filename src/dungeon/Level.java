@@ -1,4 +1,3 @@
-
 package dungeon;
 
 import entity.Player;
@@ -11,9 +10,9 @@ import java.util.Random;
  */
 public class Level {
     /**
-     * Current Play
+     * Player List
      */
-    public Player p;
+    public Arraylist<Player> p;
     /**
      * Size of the level (should be multiple of Chunk.SIZE)
      */
@@ -137,5 +136,11 @@ public class Level {
     public boolean solid(double x,double y){
         int cx=(int) (x%Chunk.SIZE),cy=(int) (y%Chunk.SIZE);
         return getChunk(x,y).chunk[cx][cy];
+    }
+    /**
+     * 
+     */
+    public Player getPlayer(int id){
+        return p.get(id);
     }
 }
