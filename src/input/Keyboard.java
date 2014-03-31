@@ -30,7 +30,7 @@ public class Keyboard implements KeyListener{
     public void keyTyped(KeyEvent e) {
         for(int i=0;i<keybinds.length;i++){
             if(e.getKeyCode()==keybinds[i]){
-                Rogue.l.p.move(actions[i][0], actions[i][1]);
+                Rogue.l.p.get(0).move(actions[i][0], actions[i][1]);
                 Rogue.gp.update();
             }
         }

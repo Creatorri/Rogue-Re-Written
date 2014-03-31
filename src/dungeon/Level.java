@@ -12,7 +12,7 @@ public class Level {
     /**
      * Player List
      */
-    public Arraylist<Player> p;
+    public ArrayList<Player> p;
     /**
      * Size of the level (should be multiple of Chunk.SIZE)
      */
