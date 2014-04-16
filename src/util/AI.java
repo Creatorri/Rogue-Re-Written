@@ -1,4 +1,3 @@
-
 package util;
 
 /**
@@ -6,5 +5,5 @@ package util;
  * @author Torri
  */
 public class AI {
-    
+
 }

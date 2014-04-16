@@ -1,4 +1,3 @@
-
 package dungeon;
 
 import entity.Entity;
@@ -6,9 +5,11 @@ import java.util.ArrayList;
 
 /**
  * Part of the world to split it all up
+ *
  * @author Torri
  */
 public class Chunk {
+
     /**
      * Size of each chunk
      */
@@ -16,7 +17,7 @@ public class Chunk {
     /**
      * x and y of the top left corner
      */
-    public int x,y;
+    public int x, y;
     /**
      * boolean representing what the world looks like
      */
@@ -25,19 +26,22 @@ public class Chunk {
      * Entities in this chunk
      */
     public ArrayList<Entity> enities = new ArrayList<>();
+
     /**
      * Creates new Chunk
+     *
      * @param x
-     * @param y 
+     * @param y
      */
-    public Chunk(int x,int y){
-        this.x=x;
-        this.y=y;
+    public Chunk(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
+
     /**
      * Updates everything in the chunk
      */
-    public void update(){
-        
+    public void update() {
+
     }
 }
