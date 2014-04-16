@@ -18,7 +18,7 @@ public class Level {
     /**
      * Size of the level (should be multiple of Chunk.SIZE)
      */
-    public static int SIZE = 160;
+    public static int SIZE = 10 * Chunk.SIZE;
     /**
      * Sprite size of this level 0=text, 16=16x16, 32=32x32, 48=48x48
      */
@@ -44,7 +44,7 @@ public class Level {
      */
     public final Random rand = new Random();
     /**
-     *
+     * Level Number
      */
     public static int NUMLEVELS = 1;
 
@@ -60,10 +60,10 @@ public class Level {
     }
 
     /**
-     * Creates a endless level
+     * Creates a level
      *
      * @param turn
-     * @param render
+     * @param render render level
      */
     public Level(boolean turn, int render) {
         NUMLEVELS++;
@@ -82,8 +82,7 @@ public class Level {
     }
 
     /**
-     * Builds level chunk by chunk Chunks added like so: y x++> + 0 2 4 6 8 10
-     * .... + 1 3 5 7 9 11 .... \/
+     * Builds level chunk by chunk Chunks added like so: x+y*width
      *
      * @param levelnum
      * @param endless

@@ -1,10 +1,13 @@
 package entity;
 
-import entity.item.Item;
 import dungeon.Chunk;
 import dungeon.Level;
-import java.util.Random;
+import entity.item.Item;
 import graphics.Sprite;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * Parent Entity class
@@ -12,6 +15,8 @@ import graphics.Sprite;
  * @author Torri
  */
 public abstract class Entity {
+
+    private static ArrayList<Entity> allEntityTypes = new ArrayList<>();
 
     /**
      * Current chunk
@@ -53,19 +58,28 @@ public abstract class Entity {
      * Inventory
      */
     public Item[] inv;
-    /**
-     *
-     */
-    public final Random rand = new Random();
+
+    protected static final Random rand = new Random();
 
     /**
-     * Creates Entity on level l
+     * Creates Entity on level l with lvl levels
      *
      * @param l
+     * @param lvl
      */
-    public Entity(Level l) {
+    public Entity(Level l, int lvl) {
         this.l = l;
+        this.xplevels = lvl;
         spawn();
+        if (this instanceof Item) {
+            return;
+        }
+        for (Entity e : allEntityTypes) {
+            if (e.getClass() == this.getClass()) {
+                return;
+            }
+        }
+        allEntityTypes.add(this);
     }
 
     /**
@@ -111,7 +125,9 @@ public abstract class Entity {
         }
         x += dx;
         y += dy;
-        switchChunks(l.getChunk(x, y));
+        if (x % Chunk.SIZE == 0 || y % Chunk.SIZE == 0) {
+            switchChunks(l.getChunk(x, y));
+        }
     }
 
     /**
@@ -152,6 +168,14 @@ public abstract class Entity {
      * @param l
      */
     public static void spawner(int am, int lvl, Level l) {
-
+        int ent = 0;
+        for (int i = 0; i < am; i++) {
+            ent = rand.nextInt(allEntityTypes.size());
+            try {
+                Entity entity = (Entity) allEntityTypes.get(ent).getClass().getConstructors()[0].newInstance(l, rand.nextInt(lvl));
+                entity.spawn();
+            } catch (SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            }
+        }
     }
 }

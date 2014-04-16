@@ -10,7 +10,7 @@ import entity.Entity;
 public class NPC extends Entity {
 
     public NPC(Level l) {
-        super(l);
+        super(l, Level.NUMLEVELS);
     }
 
     @Override

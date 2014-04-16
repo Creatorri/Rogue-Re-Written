@@ -9,7 +9,7 @@ import dungeon.Level;
 public class Player extends Entity {
 
     public Player(Level l) {
-        super(l);
+        super(l, 0);
     }
 
     @Override

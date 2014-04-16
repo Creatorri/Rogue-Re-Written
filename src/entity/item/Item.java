@@ -27,7 +27,7 @@ public class Item extends Entity {
         }
     }
 
-    public static enum modifiers {
+    public static enum modifier {
 
         NONE, BROKEN, ORDINARY, SHATTERED, OLD, HEALTHY, MAGICAL, STRONG;
 
@@ -47,7 +47,7 @@ public class Item extends Entity {
         }
     }
 
-    public static enum materials {
+    public static enum material {
 
         WOOD, STONE, COPPER, BRONZE, IRON, STEEL, SHADOW, DARKNESS, UNKNOWN;
 
@@ -67,6 +67,9 @@ public class Item extends Entity {
      * parent entity
      */
     public Entity parent;
+    public final type thing;
+    public final modifier mod;
+    public final material mat;
 
     /**
      * creates item
@@ -77,10 +80,12 @@ public class Item extends Entity {
      * @param random denotes if level is to be random or not
      */
     public Item(Level l, int lvl, int id, boolean random) {
-        super(l);
-        this.xplevels = random ? rand.nextInt(lvl) : lvl;
-        name = "Lvl " + xplevels + " " + modifiers.values()[id % modifiers.values().length].toString() + " " + materials.values()[id % materials.values().length].toString() + " " + type.values()[id % type.values().length].toString();
-
+        super(l, lvl);
+        this.xplevels = random ? rand.nextInt(lvl - 1) + 1 : lvl;
+        mod = modifier.values()[id % modifier.values().length];
+        mat = material.values()[id % material.values().length];
+        thing = type.values()[id % type.values().length];
+        name = mod.toString().equals("") ? "Lvl " + xplevels + " " + mat.toString() + " " + thing.toString() : "Lvl " + xplevels + " " + mod.toString() + " " + mat.toString() + " " + thing.toString();
     }
 
     /**

@@ -59,6 +59,7 @@ public class MButton {
         yFrac.add(num, y / ((double) (parent.getHeight())));
         sxFrac.add(num, sx / ((double) (parent.getWidth())));
         syFrac.add(num, sy / ((double) (parent.getHeight())));
+        refreshImage();
     }
 
     public void addListener(MButtonInput mbi, Component parent) {

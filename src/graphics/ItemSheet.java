@@ -1,6 +1,7 @@
 package graphics;
 
 import assets.LoadArt;
+import entity.item.Item;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -34,7 +35,7 @@ public enum ItemSheet {
         y = y1;
     }
 
-    public BufferedImage getSprite(int mod, int renderLevel, int size) {
+    public BufferedImage getSprite(Item item, int renderLevel, int size) {
         String imdir = "itemsheet" + renderLevel + ".png";
         BufferedImage i = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
         BufferedImage temp;

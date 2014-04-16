@@ -14,6 +14,7 @@ public enum SpriteSheet {
     FISH(0, 1), GOBLIN(1, 1), GOLD(2, 1), MORTUUS_TRABAJOS(3, 1),
     PLAYER(0, 2), QUATOPULARSLITH(1, 2), SNAKE(2, 2), STAIRWAY(3, 2),
     NPC(0, 2), QUESTMAN(0, 2);
+
     private final int x;
     private final int y;
 

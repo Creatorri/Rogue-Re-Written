@@ -15,8 +15,8 @@ public class HostileEntity extends Entity {
      *
      * @param l
      */
-    public HostileEntity(Level l) {
-        super(l);
+    public HostileEntity(Level l, int lvl) {
+        super(l, lvl);
     }
 
     @Override

@@ -10,7 +10,7 @@ import dungeon.Level;
 public class Stairway extends Entity {
 
     public Stairway(Level l) {
-        super(l);
+        super(l, 0);
     }
 
     @Override
