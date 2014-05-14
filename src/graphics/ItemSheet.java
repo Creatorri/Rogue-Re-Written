@@ -9,7 +9,7 @@ import java.awt.image.WritableRaster;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public enum ItemSheet {
 

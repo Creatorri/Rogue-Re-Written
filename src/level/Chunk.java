@@ -1,4 +1,4 @@
-package dungeon;
+package level;
 
 import entity.Entity;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Part of the world to split it all up
  *
- * @author Torri
+ * @author Creatorri
  */
 public class Chunk {
 
@@ -25,7 +25,7 @@ public class Chunk {
     /**
      * Entities in this chunk
      */
-    public ArrayList<Entity> enities = new ArrayList<>();
+    public ArrayList<Entity> entities = new ArrayList<>();
 
     /**
      * Creates new Chunk
@@ -42,6 +42,8 @@ public class Chunk {
      * Updates everything in the chunk
      */
     public void update() {
-
+        entities.stream().forEach((e) -> {
+            e.update();
+        });
     }
 }

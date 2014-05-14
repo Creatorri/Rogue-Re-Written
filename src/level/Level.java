@@ -1,5 +1,6 @@
-package dungeon;
+package level;
 
+import entity.Entity;
 import entity.Player;
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,7 +8,7 @@ import java.util.Random;
 /**
  * The world
  *
- * @author Torri
+ * @author Creatorri
  */
 public class Level {
 
@@ -15,6 +16,10 @@ public class Level {
      * Player List
      */
     public ArrayList<Player> p;
+    /**
+     * The entities in the world
+     */
+    public ArrayList<Entity> allEnts = new ArrayList<>();
     /**
      * Size of the level (should be multiple of Chunk.SIZE)
      */
@@ -30,7 +35,7 @@ public class Level {
     /**
      * length(x)/width(y) of rooms
      */
-    public static double ROOMRATIO = 1 / 2;
+    public static double ROOMRATIO = 1.0 / 2.0;
     /**
      * Size of the room
      */
@@ -77,8 +82,8 @@ public class Level {
     public static void reset() {
         NUMLEVELS = 0;
         NUMROOMS = 200;
-        SIZE = 160;
-        ROOMRATIO = 1 / 2;
+        SIZE = 10 * Chunk.SIZE;
+        ROOMRATIO = 1.0 / 2.0;
     }
 
     /**
@@ -94,7 +99,7 @@ public class Level {
             }
         }
         buildRooms();
-
+        populate(levelnum);
     }
 
     /**

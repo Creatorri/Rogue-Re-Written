@@ -1,11 +1,11 @@
 package entity.npc;
 
-import dungeon.Level;
+import level.Level;
 import entity.Entity;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public class NPC extends Entity {
 
@@ -14,6 +14,6 @@ public class NPC extends Entity {
     }
 
     @Override
-    public void turn() {
+    public void update() {
     }
 }

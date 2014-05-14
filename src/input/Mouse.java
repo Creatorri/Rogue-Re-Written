@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Mouse Input
  *
- * @author Torri
+ * @author Creatorri
  */
 public class Mouse implements MouseListener {
 

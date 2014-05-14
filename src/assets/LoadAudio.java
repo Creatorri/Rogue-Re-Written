@@ -14,7 +14,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public class LoadAudio {
 

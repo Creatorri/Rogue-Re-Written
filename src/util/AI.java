@@ -2,7 +2,7 @@ package util;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public class AI {
 

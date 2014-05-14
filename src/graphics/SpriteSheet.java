@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public enum SpriteSheet {
 

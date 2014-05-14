@@ -4,7 +4,7 @@ import java.awt.Component;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public abstract class MButtonInput {
 

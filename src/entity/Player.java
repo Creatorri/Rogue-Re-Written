@@ -1,10 +1,10 @@
 package entity;
 
-import dungeon.Level;
+import level.Level;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public class Player extends Entity {
 
@@ -13,6 +13,6 @@ public class Player extends Entity {
     }
 
     @Override
-    public void turn() {
+    public void update() {
     }
 }

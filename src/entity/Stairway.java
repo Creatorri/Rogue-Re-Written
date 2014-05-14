@@ -1,11 +1,11 @@
 package entity;
 
-import dungeon.Level;
+import level.Level;
 
 /**
  * Way out of each level
  *
- * @author Torri
+ * @author Creatorri
  */
 public class Stairway extends Entity {
 
@@ -14,7 +14,7 @@ public class Stairway extends Entity {
     }
 
     @Override
-    public void turn() {
+    public void update() {
         if (distTo(l.getPlayer(0)) < 1) {
 
         }

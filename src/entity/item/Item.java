@@ -1,12 +1,12 @@
 package entity.item;
 
-import dungeon.Level;
+import level.Level;
 import entity.Entity;
 
 /**
  * Items
  *
- * @author Torri
+ * @author Creatorri
  */
 public class Item extends Entity {
 
@@ -94,10 +94,10 @@ public class Item extends Entity {
     public void drop() {
         x = parent.x + (rand.nextInt(64) / 64);
         y = parent.y + (rand.nextInt(64) / 64);
-        l.getChunk(x, y).enities.add(this);
+        l.getChunk(x, y).entities.add(this);
     }
 
     @Override
-    public void turn() {
+    public void update() {
     }
 }

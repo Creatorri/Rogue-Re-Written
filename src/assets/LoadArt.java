@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public class LoadArt {
 

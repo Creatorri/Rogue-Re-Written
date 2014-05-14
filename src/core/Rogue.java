@@ -1,14 +1,15 @@
 package core;
 
-import dungeon.Level;
-import java.awt.Image;
-import javax.swing.JFrame;
 import graphics.Sprite;
 import graphics.SpriteSheet;
+import input.InputHandler;
+import java.awt.Image;
+import javax.swing.JFrame;
+import level.Level;
 
 /**
  *
- * @author Torri
+ * @author Creatorri
  */
 public class Rogue extends JFrame implements Runnable {
 
@@ -16,12 +17,14 @@ public class Rogue extends JFrame implements Runnable {
     public Thread thread;
     public boolean running = false;
     public int fps = 0;
+    public int tps = 0;
+    public static InputHandler ih;
 
     public static void main(String[] args) {
-        new Rogue("2.0.0");
+        new Rogue("2.0.0").start();
     }
 
-    public static void tick() {
+    public static void update() {
 
     }
 
@@ -53,42 +56,55 @@ public class Rogue extends JFrame implements Runnable {
 
     @Override
     public void run() {
-        int frames = 0;
-        double unprocessedSeconds = 0;
         long previousTime = System.nanoTime();
-        double secondsPerTick = 1 / 60.0;
-        int tickCount = 0;
+        double ns = 1000000000.0 / 60.0;
+        int frames = 0;
+        int ticks = 0;
+        double delta = 0;
+        long timer = System.currentTimeMillis();
+        requestFocus();
         while (running) {
             long currentTime = System.nanoTime();
-            long passedTime = currentTime - previousTime;
+            delta += (currentTime - previousTime) / ns;
             previousTime = currentTime;
-            unprocessedSeconds += passedTime / 1000000000.0;
-            while (unprocessedSeconds > secondsPerTick) {
-                tick();
-                unprocessedSeconds -= secondsPerTick;
-                tickCount++;
-                if (tickCount % 60 == 0) {
-                    fps = frames;
-                    previousTime += 1000;
-                    frames = 0;
-                }
+            if (delta >= 1) {
+                update();
+                ticks++;
+                delta--;
             }
             render();
             frames++;
+            while (System.currentTimeMillis() - timer > 1000) {
+                timer += 1000;
+                fps = frames;
+                tps = ticks;
+                frames = 0;
+                ticks = 0;
+            }
         }
-        System.gc();
     }
 
     public Rogue(String version) {
-        super("Rogue Re-Rezzed v" + version);
+        super("Rogue Re-Rezzed Alpha v" + version);
         setSize(750, 500);
         this.setFocusable(true);
         this.setResizable(true);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        ih = new InputHandler();
+        this.addInputHandler(ih);
 
-        Image ico = (new Sprite(SpriteSheet.QUATOPULARSLITH, 64, l != null ? l.RENDERLEVEL : 0)).img;
+        Image ico = (new Sprite(SpriteSheet.QUATOPULARSLITH, 64, 0)).img;
         this.setIconImage(ico);
+
+        this.pack();
+    }
+    
+    private void addInputHandler(InputHandler ih){
+        this.addKeyListener(ih);
+        this.addMouseListener(ih);
+        this.addMouseMotionListener(ih);
     }
 }

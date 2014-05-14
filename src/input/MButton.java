@@ -14,7 +14,7 @@ import java.util.Objects;
  * Mouse Button
  *
  * @version 2.0.0
- * @author Torri
+ * @author Creatorri
  */
 public class MButton {
 

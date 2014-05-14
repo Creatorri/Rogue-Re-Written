@@ -1,12 +1,12 @@
 package entity.hostile;
 
-import dungeon.Level;
+import level.Level;
 import entity.Entity;
 
 /**
  * "Bad Guys"
  *
- * @author Torri
+ * @author Creatorri
  */
 public class HostileEntity extends Entity {
 
@@ -20,6 +20,6 @@ public class HostileEntity extends Entity {
     }
 
     @Override
-    public void turn() {
+    public void update() {
     }
 }

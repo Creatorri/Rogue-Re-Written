@@ -1,22 +1,17 @@
 package entity;
 
-import dungeon.Chunk;
-import dungeon.Level;
+import level.Chunk;
+import level.Level;
 import entity.item.Item;
 import graphics.Sprite;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.logging.Logger;
 
 /**
  * Parent Entity class
  *
- * @author Torri
+ * @author Creatorri
  */
 public abstract class Entity {
-
-    private static ArrayList<Entity> allEntityTypes = new ArrayList<>();
 
     /**
      * Current chunk
@@ -51,13 +46,17 @@ public abstract class Entity {
      */
     public String name = this.getClass().getName();
     /**
-     * Level of the Entity
+     * Level of which the Entity resides in
      */
     public Level l;
     /**
      * Inventory
      */
     public Item[] inv;
+    /**
+     * identifier in the world
+     */
+    public final int ID;
 
     protected static final Random rand = new Random();
 
@@ -70,16 +69,11 @@ public abstract class Entity {
     public Entity(Level l, int lvl) {
         this.l = l;
         this.xplevels = lvl;
-        spawn();
-        if (this instanceof Item) {
-            return;
+        ID = l.allEnts.size();
+        l.allEnts.add(this);
+        if (!(this instanceof Item)) {
+            spawn();
         }
-        for (Entity e : allEntityTypes) {
-            if (e.getClass() == this.getClass()) {
-                return;
-            }
-        }
-        allEntityTypes.add(this);
     }
 
     /**
@@ -95,7 +89,7 @@ public abstract class Entity {
     /**
      * Updates entity
      */
-    public abstract void turn();
+    public abstract void update();
 
     /**
      * Spawns randomly on the level
@@ -118,7 +112,7 @@ public abstract class Entity {
         if (l.solid(x, y)) {
             return;
         }
-        for (Entity e : l.getChunk(x, y).enities) {
+        for (Entity e : l.getChunk(x, y).entities) {
             if (x + dx == e.x && y + dy == e.y) {
                 return;
             }
@@ -140,11 +134,11 @@ public abstract class Entity {
             return;
         }
         if (c != null) {
-            c.enities.remove(this);
+            c.entities.remove(this);
         }
         c = nc;
         if (c != null) {
-            c.enities.add(this);
+            c.entities.add(this);
         }
     }
 
@@ -157,25 +151,6 @@ public abstract class Entity {
                 inv1.drop();
             }
         }
-        c.enities.remove(this);
-    }
-
-    /**
-     * Spawns a bunch of entities
-     *
-     * @param am
-     * @param lvl
-     * @param l
-     */
-    public static void spawner(int am, int lvl, Level l) {
-        int ent = 0;
-        for (int i = 0; i < am; i++) {
-            ent = rand.nextInt(allEntityTypes.size());
-            try {
-                Entity entity = (Entity) allEntityTypes.get(ent).getClass().getConstructors()[0].newInstance(l, rand.nextInt(lvl));
-                entity.spawn();
-            } catch (SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            }
-        }
+        c.entities.remove(this);
     }
 }
